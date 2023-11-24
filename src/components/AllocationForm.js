@@ -10,12 +10,18 @@ const AllocationForm = (props) => {
     const [action, setAction] = useState('');
 
     const submitEvent = () => {
+        
+        if(isNaN(parseInt(cost))) {
+            alert("Warning: the input must be a number");
+            setCost("");
+            return;
+        }
 
-            if(cost > remaining) {
-                alert("The value cannot exceed remaining funds  £"+remaining);
-                setCost("");
-                return;
-            }
+        if(cost > remaining) {
+            alert("Warning: the value cannot exceed the remaining budget  £"+remaining);
+            setCost("");
+            return;
+        }
 
         const expense = {
             name: name,
